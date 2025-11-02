@@ -4,25 +4,34 @@
 
 #include <iostream>
 
+constexpr int MIN_COLLATZ_VALID_NUMBER = 1;
+
 int CollatzOrbit(int number) {
 
    int orbit = 0;
 
-   while (number != 1) {
+   if (number >= MIN_COLLATZ_VALID_NUMBER) {
+      while (number != 1) {
 
-      if (number % 2 == 0) {
-         number /= 2;
-      } else {
-         number = number * 3 + 1;
+         if (number % 2 == 0) {
+            number /= 2;
+         } else {
+            number = number * 3 + 1;
+         }
+
+         orbit++;
       }
-
-      orbit++;
    }
 
    return orbit;
 }
 
+constexpr int NO_VALID_NUMBER = 0;
+
 void MaxOrbitInRange(int min, int max, int& max_orbit, int& number) {
+
+   max_orbit = 0;
+   number = NO_VALID_NUMBER;
 
    for (int i = min; i <= max; ++i) {
       int orbit = CollatzOrbit(i);
@@ -54,7 +63,7 @@ int ReadGreaterEqualThan(int threshold, const std::string& msg, const std::strin
 }
 
 void ReadMinMax(int& min, int& max) {
-   min = ReadGreaterEqualThan(0, "Introduce the interval min: ", "Min value must be positive.");
+   min = ReadGreaterEqualThan(MIN_COLLATZ_VALID_NUMBER, "Introduce the interval min: ", "Min value must be positive.");
    max = ReadGreaterEqualThan(min, "Introduce the interval max: ", "Max value must be greater than min.");
 }
 
