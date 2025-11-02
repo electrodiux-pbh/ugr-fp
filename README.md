@@ -12,6 +12,6 @@ Los ejercicios están escritos en **C++** y pueden compilarse usando cualquier c
 
 ---
 
-**Autor**: Pablo Bermejo Hernandez
-**Universidad**: Universidad de Granada (UGR)
-**Asignatura**: Fundamentos de Programación
+- **Autor**: Pablo Bermejo Hernandez
+- **Universidad**: Universidad de Granada (UGR)
+- **Asignatura**: Fundamentos de Programación
