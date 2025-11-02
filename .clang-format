@@ -2,3 +2,5 @@ IndentWidth: 3
 UseTab: Never
 ColumnLimit: 120
 PointerAlignment: Left
+BreakTemplateDeclarations: Yes
+AllowShortFunctionsOnASingleLine: Empty
