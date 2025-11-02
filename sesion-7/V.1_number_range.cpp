@@ -70,12 +70,15 @@ NumericInterval ReadInterval() {
    con diferentes tipos de intervalos, por ahora solo lee intervalos cerrados.
    */
 
-   return NumericInterval{
-       .min = min,
-       .min_inclusive = IS_INTERVAL_INCLUSIVE,
-       .max = max,
-       .max_inclusive = IS_INTERVAL_INCLUSIVE,
-   };
+   // Ops esta inicialización es de C++20, la cambio por la de C++11
+   // return NumericInterval{
+   //     .min = min,
+   //     .min_inclusive = IS_INTERVAL_INCLUSIVE,
+   //     .max = max,
+   //     .max_inclusive = IS_INTERVAL_INCLUSIVE,
+   // };
+
+   return NumericInterval{min, IS_INTERVAL_INCLUSIVE, max, IS_INTERVAL_INCLUSIVE};
 }
 
 std::string IntervalToString(const NumericInterval& interval) {
