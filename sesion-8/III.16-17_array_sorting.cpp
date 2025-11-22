@@ -10,14 +10,13 @@ bool IsSorted(int v[], int size) {
    for (int i = 1; i < size && sorted; i++) {
       if (v[i - 1] > v[i]) {
          sorted = false;
-         // Aquí usaría un break en vez de la condición de bucle
       }
    }
 
    return sorted;
 }
 
-void Sort(int v[], int size) {
+void SortReflex(int v[], int size) {
    while (!IsSorted(v, size)) {
       for (int i = 1; i < size; i++) {
          int i_prev = i - 1;
@@ -87,8 +86,36 @@ int main() {
    std::cout << "Enter digits: ";
    std::cin >> digit_count;
 
-   Sort(digits, size);
-   int number = NumberFromDigits(digits, digit_count);
+   constexpr int NUMBER_BASE = 10;
+
+   int digits_count[NUMBER_BASE];
+
+   // Initialize to 0
+   for (int i = 0; i < size; i++) {
+      digits_count[i] = 0;
+   }
+
+   // Count all the digits
+   for (int i = 0; i < size; i++) {
+      digits_count[i]++;
+   }
+
+   int number = 0;
+
+   // Create the number
+   for (int i = 0; i < digit_count; i++) {
+      number *= NUMBER_BASE;
+
+      bool digit_found = false;
+
+      for (int j = 0; j < NUMBER_BASE && !digit_found; j++) {
+         if (digits_count[j] > 0) {
+            number += j;
+            digit_found = true;
+            digits_count[j]--;
+         }
+      }
+   }
 
    std::cout << "The minimum number you can achieve is " << number << "\n";
 }
